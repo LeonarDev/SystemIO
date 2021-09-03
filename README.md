@@ -367,6 +367,7 @@ namespace Course {
 ```c#
 using System;
 using System.IO;
+using System.Collections.Generic
 
 namespace Course {
     class Program {
@@ -375,18 +376,26 @@ namespace Course {
             string path = @"c:\temp\myfolder";
             try
             {
+                // Listar pastas a partir de uma pasta informada:
+                // IEnumerable<string> folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
                 var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
                 Console.WriteLine("FOLDERS:");
                 foreach (string s in folders)
                 {
                 	Console.WriteLine(s);
             	}
+                
+                // Listar arquivos a partir de uma pasta informada:
+                // IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
             	var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
                 Console.WriteLine("FILES:");
                 foreach (string s in files)
                 {
                     Console.WriteLine(s);
                 }
+                
+                // Criar pasta:
+                // Directory.CreateDirectory(path + "\\newfolder");
             	Directory.CreateDirectory(@"c:\temp\myfolder\newfolder");
             }
             catch (IOException e)
@@ -420,21 +429,53 @@ namespace Course {
 using System;
 using System.IO;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string path = @"c:\temp\myfolder\file1.txt";
             
-        string path = @"c:\temp\myfolder\file1.txt";
-        Console.WriteLine("DirectorySeparatorChar: " + Path.DirectorySeparatorChar);
-        Console.WriteLine("PathSeparator: " + Path.PathSeparator);
-        Console.WriteLine("GetDirectoryName: " + Path.GetDirectoryName(path));
-        Console.WriteLine("GetFileName: " + Path.GetFileName(path));
-        Console.WriteLine("GetExtension: " + Path.GetExtension(path));
-        Console.WriteLine("GetFileNameWithoutExtension: " + Path.GetFileNameWithoutExtension(path));
-        Console.WriteLine("GetFullPath: " + Path.GetFullPath(path));
-        Console.WriteLine("GetTempPath: " + Path.GetTempPath());
+            Console.WriteLine($"DirectorySeparatorChar: {Path.DirectorySeparatorChar}");
+            // DirectorySeparatorChar: \
+            
+            Console.WriteLine($"PathSeparator: {Path.PathSeparator}");
+            // PathSeparator: ;
+            
+            Console.WriteLine($"GetDirectoryName: {Path.GetDirectoryName(path)}");
+            // GetDirectoryName: c:\temp\myfolder
+            
+            Console.WriteLine($"GetFileName: {Path.GetFileName(path)}");
+            // GetFileName: file1.txt
+            
+            Console.WriteLine($"GetExtension: {Path.GetExtension(path)}");
+            // GetExtension: .txt
+            
+            Console.WriteLine($"GetFileNameWithoutExtension: {Path.GetFileNameWithoutExtension(path)}");
+            // GetFileNameWithoutExtension: file1
+            
+            Console.WriteLine($"GetFullPath: {Path.GetFullPath(path)}");
+            // GetFullPath: c:\temp\myfolder\file1.txt
+            
+            Console.WriteLine($"GetTempPath: {Path.GetTempPath()}");
+            // GetTempPath: C:Users\Majevski\AppData\Local\Temp\
         }
     }
 }
 ```
 
+
+
+<br>
+
+
+
+## Exercício:
+
+<img src="./img/1.png">
+
+
+
+<img src="./img/2.png">
