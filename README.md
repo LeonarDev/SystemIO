@@ -283,3 +283,158 @@ namespace Course {
         }
     }
 }
+
+```
+
+
+
+<br>
+
+
+
+### StreamWriter
+https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx
+
+É uma stream capaz de escrever caracteres a partir de uma stream binária (ex:
+FileStream).
+
+Suporte a dados no formato de texto.
+
+Instantiation:
+
+- Several constructors
+- File / FileInfo
+  - CreateText(path)
+  - AppendText(String)  
+
+
+
+```c#
+Demo
+using System;
+using System.IO;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+            
+            string sourcePath = @"c:\temp\file1.txt";
+            string targetPath = @"c:\temp\file2.txt";
+            try
+            {
+                string[] lines = File.ReadAllLines(sourcePath);
+                using (StreamWriter sw = File.AppendText(targetPath)) {
+                    foreach (string line in lines)
+                    {
+	                    sw.WriteLine(line.ToUpper());
+           			}
+            	}
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("An error occurred");
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+
+
+<br>
+
+
+
+### Directory, DirectoryInfo
+
+#### Namespace System.IO
+
+- Operações com pastas (create, enumerate, get files, etc.).
+
+- Directory
+  - static members (simple, but performs security check for each operation)
+  - https://msdn.microsoft.com/en-us/library/system.io.directory(v=vs.110).aspx
+
+
+
+- DirectoryInfo
+  - instance members
+  - https://msdn.microsoft.com/en-us/library/system.io.directoryinfo(v=vs.110).aspx  
+
+
+
+```c#
+using System;
+using System.IO;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+            
+            string path = @"c:\temp\myfolder";
+            try
+            {
+                var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("FOLDERS:");
+                foreach (string s in folders)
+                {
+                	Console.WriteLine(s);
+            	}
+            	var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("FILES:");
+                foreach (string s in files)
+                {
+                    Console.WriteLine(s);
+                }
+            	Directory.CreateDirectory(@"c:\temp\myfolder\newfolder");
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("An error occurred");
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
+```
+
+
+
+<br>
+
+
+
+### Path
+
+#### Namespace System.IO
+
+- Realiza operações com strings que contém informações de arquivos
+  ou pastas.
+
+- https://msdn.microsoft.com/en-us/library/system.io.path(v=vs.110).aspx  
+
+
+
+```c#
+using System;
+using System.IO;
+
+namespace Course {
+    class Program {
+        static void Main(string[] args) {
+            
+        string path = @"c:\temp\myfolder\file1.txt";
+        Console.WriteLine("DirectorySeparatorChar: " + Path.DirectorySeparatorChar);
+        Console.WriteLine("PathSeparator: " + Path.PathSeparator);
+        Console.WriteLine("GetDirectoryName: " + Path.GetDirectoryName(path));
+        Console.WriteLine("GetFileName: " + Path.GetFileName(path));
+        Console.WriteLine("GetExtension: " + Path.GetExtension(path));
+        Console.WriteLine("GetFileNameWithoutExtension: " + Path.GetFileNameWithoutExtension(path));
+        Console.WriteLine("GetFullPath: " + Path.GetFullPath(path));
+        Console.WriteLine("GetTempPath: " + Path.GetTempPath());
+        }
+    }
+}
+```
+
