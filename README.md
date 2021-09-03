@@ -52,7 +52,9 @@ namespace Course
 	            File.Copy(sourcePath, targetPath);
 
                 string[] lines = File.ReadAllLines(sourcePath);
-    	        foreach (string line in lines) {
+                
+    	        foreach (string line in lines)
+                {
         	    	Console.WriteLine(line);
             	}
 			}
@@ -87,7 +89,9 @@ namespace Course
 				fileInfo.CopyTo(targetPath);
 
                 string[] lines = File.ReadAllLines(sourcePath);
-    	        foreach (string line in lines) {
+                
+    	        foreach (string line in lines)
+                {
         	    	Console.WriteLine(line);
             	}
 			}
@@ -202,7 +206,8 @@ namespace Course
             {
                 sr = File.OpenText(path);
 
-                while (!sr.EndOfStream) {
+                while (!sr.EndOfStream)
+                {
                     string line = sr.ReadLine();
                     Console.WriteLine(line);
                 }
@@ -254,8 +259,10 @@ namespace Course
             
             try
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open)) {
-                    using (StreamReader sr = new StreamReader(fs)) {
+                using (FileStream fs = new FileStream(path, FileMode.Open))
+                {
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
                         string line = sr.ReadLine();
                         Console.WriteLine(line);
                     }
@@ -288,8 +295,10 @@ namespace Course
             
             try
             {
-                using (StreamReader sr = File.OpenText(path)) {
-                    while (!sr.EndOfStream) {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    while (!sr.EndOfStream)
+                    {
                     	string line = sr.ReadLine();
                     	Console.WriteLine(line);
                 	}
