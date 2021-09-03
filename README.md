@@ -347,11 +347,12 @@ namespace Course
             try
             {
                 string[] lines = File.ReadAllLines(sourcePath);
-                using (StreamWriter sw = File.AppendText(targetPath)) {
+                using (StreamWriter sw = File.AppendText(targetPath))
+                {
                     foreach (string line in lines)
                     {
 	                    sw.WriteLine(line.ToUpper());
-           			}
+					}
             	}
             }
             catch (IOException e)
@@ -407,7 +408,7 @@ namespace Course {
                 Console.WriteLine("FOLDERS:");
                 foreach (string s in folders)
                 {
-                	Console.WriteLine(s);
+					Console.WriteLine(s);
             	}
                 
                 // Listar arquivos a partir de uma pasta informada:
@@ -416,7 +417,7 @@ namespace Course {
                 Console.WriteLine("FILES:");
                 foreach (string s in files)
                 {
-                    Console.WriteLine(s);
+					Console.WriteLine(s);
                 }
                 
                 // Criar pasta:
