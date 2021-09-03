@@ -37,9 +37,13 @@
 using System;
 using System.IO;
 
-namespace Course {
-	class Program {
-		static void Main(string[] args) {
+namespace Course 
+{
+	class Program 
+    {
+		static void Main(string[] args) 
+        {
+            
 			string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
 
@@ -68,9 +72,12 @@ namespace Course {
 using System;
 using System.IO;
 
-namespace Course {
-	class Program {
-		static void Main(string[] args) {
+namespace Course 
+{
+	class Program 
+    {
+		static void Main(string[] args)
+        {
 			string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
 
@@ -142,9 +149,12 @@ Instanciação:
 using System;
 using System.IO;
 
-namespace Course {
-	class Program {
-		static void Main(string[] args) {
+namespace Course 
+{
+	class Program 
+    {
+		static void Main(string[] args)
+        {
             
 			string path = @"c:\temp\file1.txt";
             FileStream fs = null;
@@ -178,9 +188,12 @@ namespace Course {
 using System;
 using System.IO;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             
             string path = @"c:\temp\file1.txt";
             StreamReader sr = null;
@@ -230,9 +243,12 @@ Objetos IDisposable NÃO são gerenciados pelo CLR. Eles precisam ser manualment
 using System;
 using System.IO;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             
             string path = @"c:\temp\file1.txt";
             
@@ -261,11 +277,15 @@ namespace Course {
 using System;
 using System.IO;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             
             string path = @"c:\temp\file1.txt";
+            
             try
             {
                 using (StreamReader sr = File.OpenText(path)) {
@@ -314,12 +334,16 @@ Demo
 using System;
 using System.IO;
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             
             string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
+            
             try
             {
                 string[] lines = File.ReadAllLines(sourcePath);
@@ -374,6 +398,7 @@ namespace Course {
         static void Main(string[] args) {
             
             string path = @"c:\temp\myfolder";
+            
             try
             {
                 // Listar pastas a partir de uma pasta informada:
