@@ -39,32 +39,30 @@ using System.IO;
 
 namespace Course 
 {
-	class Program 
+    class Program 
     {
-		static void Main(string[] args) 
+        static void Main(string[] args) 
         {
-            
-			string sourcePath = @"c:\temp\file1.txt";
+            string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
 
             try
             {
-	            File.Copy(sourcePath, targetPath);
-
+                File.Copy(sourcePath, targetPath);
                 string[] lines = File.ReadAllLines(sourcePath);
-                
-    	        foreach (string line in lines)
+
+                foreach (string line in lines)
                 {
-        	    	Console.WriteLine(line);
-            	}
-			}
+                    Console.WriteLine(line);
+                }
+            }
             catch (IOException e)
             {
-            	Console.WriteLine("An error occurred");
-	            Console.WriteLine(e.Message);
+                Console.WriteLine("An error occurred");
+                Console.WriteLine(e.Message);
             }
-		}
-	}
+        }
+    }
 }
 ```
 
@@ -76,32 +74,32 @@ using System.IO;
 
 namespace Course 
 {
-	class Program 
+    class Program 
     {
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
-			string sourcePath = @"c:\temp\file1.txt";
+            string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
 
             try
             {
-	            FileInfo fileInfo = new FileInfo(sourcePath);
-				fileInfo.CopyTo(targetPath);
+                FileInfo fileInfo = new FileInfo(sourcePath);
+                fileInfo.CopyTo(targetPath);
 
                 string[] lines = File.ReadAllLines(sourcePath);
-                
-    	        foreach (string line in lines)
+
+                foreach (string line in lines)
                 {
-        	    	Console.WriteLine(line);
-            	}
-			}
+                    Console.WriteLine(line);
+                }
+            }
             catch (IOException e)
             {
-            	Console.WriteLine("An error occurred");
-	            Console.WriteLine(e.Message);
+                Console.WriteLine("An error occurred");
+                Console.WriteLine(e.Message);
             }
-		}
-	}
+        }
+    }
 }
 ```
 
@@ -155,15 +153,14 @@ using System.IO;
 
 namespace Course 
 {
-	class Program 
+    class Program 
     {
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
-            
-			string path = @"c:\temp\file1.txt";
+            string path = @"c:\temp\file1.txt";
             FileStream fs = null;
             StreamReader sr = null;
-            
+
             try
             {
                 fs = new FileStream(path, FileMode.Open); // File.OpenRead(path);
@@ -178,11 +175,11 @@ namespace Course
             }
             finally
             {
-            	if (sr != null) sr.Close();
-	            if (fs != null) fs.Close();
+                if (sr != null) sr.Close();
+                if (fs != null) fs.Close();
             }
-		}
-	}
+        }
+    }
 }
 ```
 
@@ -198,7 +195,6 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            
             string path = @"c:\temp\file1.txt";
             StreamReader sr = null;
 
@@ -254,9 +250,8 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            
             string path = @"c:\temp\file1.txt";
-            
+
             try
             {
                 using (FileStream fs = new FileStream(path, FileMode.Open))
@@ -266,7 +261,7 @@ namespace Course
                         string line = sr.ReadLine();
                         Console.WriteLine(line);
                     }
-            	}
+                }
             }
             catch (IOException e)
             {
@@ -290,19 +285,18 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            
             string path = @"c:\temp\file1.txt";
-            
+
             try
             {
                 using (StreamReader sr = File.OpenText(path))
                 {
                     while (!sr.EndOfStream)
                     {
-                    	string line = sr.ReadLine();
-                    	Console.WriteLine(line);
-                	}
-            	}
+                        string line = sr.ReadLine();
+                        Console.WriteLine(line);
+                    }
+                }
             }
             catch (IOException e)
             {
@@ -315,11 +309,7 @@ namespace Course
 
 ```
 
-
-
 <br>
-
-
 
 ### StreamWriter
 https://msdn.microsoft.com/en-us/library/system.io.streamwriter(v=vs.110).aspx
@@ -349,10 +339,9 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            
             string sourcePath = @"c:\temp\file1.txt";
             string targetPath = @"c:\temp\file2.txt";
-            
+
             try
             {
                 string[] lines = File.ReadAllLines(sourcePath);
@@ -360,9 +349,9 @@ namespace Course
                 {
                     foreach (string line in lines)
                     {
-	                    sw.WriteLine(line.ToUpper());
-					}
-            	}
+                        sw.WriteLine(line.ToUpper());
+                    }
+                }
             }
             catch (IOException e)
             {
@@ -403,35 +392,39 @@ using System;
 using System.IO;
 using System.Collections.Generic
 
-namespace Course {
-    class Program {
-        static void Main(string[] args) {
-            
+namespace Course
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             string path = @"c:\temp\myfolder";
-            
+
             try
             {
                 // Listar pastas a partir de uma pasta informada:
                 // IEnumerable<string> folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
                 var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
-                Console.WriteLine("FOLDERS:");
-                foreach (string s in folders)
-                {
-					Console.WriteLine(s);
-            	}
                 
+		Console.WriteLine("FOLDERS:");
+		foreach (string s in folders)
+                {
+                    Console.WriteLine(s);
+                }
+
                 // Listar arquivos a partir de uma pasta informada:
                 // IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
-            	var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
-                Console.WriteLine("FILES:");
+                var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                
+		Console.WriteLine("FILES:");
                 foreach (string s in files)
                 {
-					Console.WriteLine(s);
+                    Console.WriteLine(s);
                 }
-                
+
                 // Criar pasta:
                 // Directory.CreateDirectory(path + "\\newfolder");
-            	Directory.CreateDirectory(@"c:\temp\myfolder\newfolder");
+                Directory.CreateDirectory(@"c:\temp\myfolder\newfolder");
             }
             catch (IOException e)
             {
